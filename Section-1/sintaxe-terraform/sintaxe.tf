@@ -1,3 +1,7 @@
+# Arquivo criado para demonstrar a sintaxe e estrutura do Terraform usando HCL (HashiCorp Configuration Language).
+# Este arquivo contém exemplos de blocos comuns utilizados no Terraform, como provedores, recursos, módulos, variáveis e saídas.
+# Cada bloco é comentado para explicar sua finalidade e uso.
+
 terraform {
     # Bloco principal para configurar opções globais do Terraform, como versão e backend.
 }
