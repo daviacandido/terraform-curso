@@ -6,6 +6,15 @@ O estudo segue o mesmo formato teórico e prático, porém ainda **não contém 
 
 ---
 
+## Conteúdos estudados
+
+- Conceitos práticos de criação de um **Storage Account** na Azure.  
+- Uso de **variables** para parametrizar valores no Terraform.  
+- Uso de **locals** para definir valores reutilizáveis.  
+- Uso de **output** para expor informações após a execução do plano.  
+
+---
+
 ## Estrutura do recurso
 
 A criação do Storage Account envolve os seguintes componentes:  
