@@ -9,7 +9,7 @@ resource "azurerm_public_ip" "public_ip" {
   name                = "public-ip-fterraform"
   location            = var.location
   resource_group_name = azurerm_resource_group.resource_group.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
 
   tags = local.common_tags
 }
@@ -57,8 +57,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "22_04-LTS"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts-gen2"
     version   = "latest"
   }
 
