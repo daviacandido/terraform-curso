@@ -31,4 +31,18 @@ O aprendizado ainda está **em andamento**, sendo atualizado conforme avanço na
 
 ---
 
+- **[Section-3](./Section-3)**  
+  Terceira parte dos estudos, focada na diferença entre **local state** e **remote state** no Terraform.  
+
+  Nesta seção foram estudados:  
+  1. Diferença entre **Local State** e **Remote State**.  
+  2. Criação de um **S3 Bucket** na AWS para armazenar *remote state* de projetos AWS.  
+  3. Criação de um **Storage Account** na Azure para armazenar *remote state* de projetos Azure.  
+  4. Configuração centralizada em um único código de Terraform para gerenciar ambos os backends.  
+
+  > 📌 Detalhes podem ser encontrados no arquivo  
+  > [README da Section-3](./Section-3/README.md)
+
+---
+
 Mais seções serão adicionadas conforme o progresso dos estudos.
