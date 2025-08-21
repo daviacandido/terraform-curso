@@ -25,7 +25,7 @@ variable "resource_group_name" {
 variable "storage_account_name" {
   description = "Nome da conta de armazenamento, deve ser único em toda a Azure."
   type        = string
-  default     = "stgaccfterraformdaviacandido" # Deve ser único globalmente, ajuste conforme necessário
+  default     = "stofterraformd4v1candido" # Deve ser único globalmente, ajuste conforme necessário
 }
 
 variable "container_name" {
