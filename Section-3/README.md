@@ -46,7 +46,14 @@ Foi criado um código de Terraform que prepara a infraestrutura necessária para
 
 Além da configuração dos backends, o conceito de *remote state* foi colocado em prática com a criação de recursos reais:
 
-- Na **AWS**, foi criada uma **VPC** utilizando o *remote state* armazenado no S3.
+- Na **AWS**, foi criada uma **VPC** utilizando o *remote state* armazenado no S3, para isso foi necessário também estudar e implementar:
+   - VPC
+   - Subnet
+   - Internet Gateway
+   - Route Table
+   - Route Table Association
+   -Security Group
+
 - Na **Azure**, foi criada uma **VNet** utilizando o *remote state* armazenado no Storage Account.
 
 Isso permitiu validar a utilidade do estado remoto para gerenciar e versionar infraestrutura de forma colaborativa e confiável.
