@@ -40,8 +40,17 @@ Foi criado um código de Terraform que prepara a infraestrutura necessária para
 2. **Azure**  
    - Criado um **Storage Account** para ser utilizado como backend remoto para os projetos que rodam na Azure Cloud.  
 
-Tudo foi feito em **um único código de Terraform**, permitindo a configuração centralizada dos dois *backends*.  
+---
+
+## Aplicação prática do Remote State
+
+Além da configuração dos backends, o conceito de *remote state* foi colocado em prática com a criação de recursos reais:
+
+- Na **AWS**, foi criada uma **VPC** utilizando o *remote state* armazenado no S3.  
+- Na **Azure**, foi criada uma **VNet** utilizando o *remote state* armazenado no Storage Account.  
+
+Isso permitiu validar a utilidade do estado remoto para gerenciar e versionar infraestrutura de forma colaborativa e confiável.
 
 ---
 
-> ⚠️ Este estudo está em andamento, mas já consolida a diferença prática entre **local state** e **remote state**, além de preparar a base para projetos colaborativos.
+> ⚠️ Este estudo consolidou a diferença prática entre **local state** e **remote state**, além de demonstrar como utilizá-los na AWS e na Azure em projetos reais.
