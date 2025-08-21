@@ -3,15 +3,15 @@ terraform {
 
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "6.9.0"
     }
   }
 
   backend "s3" {
-    bucket         = "daviacandido-remote-state-bucket"
-    key            = "aws-vm/terraform.tfstate"
-    region         = "us-east-1"
+    bucket = "daviacandido-remote-state-bucket"
+    key    = "aws-vm/terraform.tfstate"
+    region = "us-east-1"
   }
 }
 
@@ -20,8 +20,8 @@ provider "aws" {
 
   default_tags {
     tags = {
-      owner = "daviacandido"
-      managed-by     = "terraform"
+      owner      = "daviacandido"
+      managed-by = "terraform"
     }
   }
 }
