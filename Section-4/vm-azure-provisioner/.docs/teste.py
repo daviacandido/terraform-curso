@@ -1,0 +1,1 @@
+print("Arquivo de teste criado para verificar o funcionamento provisionador Azure")
