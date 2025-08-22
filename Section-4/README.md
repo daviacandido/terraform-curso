@@ -48,11 +48,13 @@ Por isso, também foram estudados:
 
 - **user_data (AWS)**
   - Permite passar instruções de inicialização ao criar uma **EC2 Instance**.
-  - Foi utilizado um **script criado por mim** que sobe o Docker e executa um container com a imagem do **NGINX**, automatizando o provisionamento da VM sem precisar de provisioners.
+  - Foi utilizado um **[script criado por mim](./vm-aws-user-data/docs/script.sh)** que sobe o Docker e executa um container com a imagem do **NGINX**.
 
 - **custom_data (Azure)**
   - Permite passar instruções de inicialização ao criar uma **Virtual Machine**.
-  - Funciona de forma semelhante ao `user_data` da AWS.
+  - Foi utilizado o **mesmo script**, localizado em [./vm-azure-custom-data/docs/script.sh](./vm-azure-custom-data/docs/script.sh).
+
+Assim, tanto no `user_data` (AWS) quanto no `custom_data` (Azure) o processo de inicialização da VM executa o mesmo provisionamento, apenas mudando o diretório em que o script está armazenado.
 
 ---
 
