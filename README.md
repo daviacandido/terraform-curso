@@ -81,4 +81,19 @@ O aprendizado ainda está **em andamento**, sendo atualizado conforme avanço na
 
 ---
 
+- **[Section-5](./Section-5)**
+  Quinta parte dos estudos, focada em **Módulos no Terraform**.
+
+  Nesta seção foram estudados:
+  1. Boas práticas — ao usar módulos remotos, **sempre especificar a versão** do módulo remoto.
+  2. **Módulos locais (AWS):** criado um módulo próprio para **network e VPC**, sem reutilizar a VPC criada na *Section-3*.
+  3. **Módulos remotos (Azure):** utilizado o módulo remoto **network**, que cria a **VNet** e as **subnets**.
+     - Esse módulo pode usar `subnet_count` ou `subnet_for_each`.
+     - Neste estudo, foi utilizado o **for_each**.
+
+  > 📌 Detalhes podem ser encontrados no arquivo
+  > [README da Section-5](./Section-5/README.md)
+
+---
+
 Mais seções serão adicionadas conforme o progresso dos estudos.
