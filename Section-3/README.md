@@ -52,7 +52,7 @@ Além da configuração dos backends, o conceito de *remote state* foi colocado 
    - Internet Gateway
    - Route Table
    - Route Table Association
-   -Security Group
+   - Security Group
 
 - Na **Azure**, foi criada uma **VNet** utilizando o *remote state* armazenado no Storage Account.
 
@@ -79,4 +79,46 @@ Para aprofundar ainda mais o uso do Terraform com *remote state*, foi realizado 
 
 ---
 
-> ⚠️ Este estudo consolidou a diferença prática entre **local state** e **remote state**, além de demonstrar como utilizá-los em projetos reais com AWS e Azure, indo além do armazenamento de estado e avançando para a criação de **máquinas virtuais**.
+## Estudo complementar: comandos avançados do Terraform
+
+Durante esta seção, também foram estudados comandos úteis para manipular e inspecionar o estado:
+
+- **terraform show**
+  Mostra o estado atual da infraestrutura gerenciada pelo Terraform de forma detalhada.
+
+- **terraform state**
+  Comando para manipular o arquivo de *state* (listar, mover, remover ou importar recursos específicos).
+
+- **terraform import / terraform refresh**
+  - `import`: importa um recurso já existente na nuvem para o controle do Terraform.
+  - `refresh`: sincroniza o *state* com o estado real da infraestrutura.
+
+- **terraform init -reconfigure / -migrate-state / -backend-config**
+  - `-reconfigure`: reconfigura o backend sem migrar automaticamente o *state*.
+  - `-migrate-state`: migra o estado existente para um novo backend.
+  - `-backend-config`: permite passar configurações adicionais de backend no momento da inicialização.
+
+- **terraform force-unlock**
+  Desbloqueia manualmente um *state* remoto que ficou travado por erro ou interrupção no processo.
+
+- **terraform plan -generate-config-out**
+  Gera um arquivo de configuração sugerida para recursos detectados, facilitando a importação e documentação no código.
+
+---
+
+## Estudo complementar: blocos do Terraform
+
+Também foram estudados os seguintes blocos que ajudam a manipular e controlar recursos no *state*:
+
+- **moved**
+  Utilizado para indicar ao Terraform que um recurso foi renomeado ou movido dentro do código, evitando destruição e recriação desnecessária.
+
+- **removed**
+  Indica que um recurso foi removido do código e deve ser removido também do *state*, mantendo consistência entre infraestrutura e código.
+
+- **import**
+  Bloco usado para importar recursos existentes diretamente no código HCL, permitindo que sejam gerenciados pelo Terraform sem recriação.
+
+---
+
+> ⚠️ Este estudo consolidou a diferença prática entre **local state** e **remote state**, além de demonstrar como utilizá-los em projetos reais com AWS e Azure, indo além do armazenamento de estado e avançando para a criação de **máquinas virtuais**, uso de **comandos avançados** e blocos de manipulação de recursos do Terraform.
