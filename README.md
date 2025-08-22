@@ -51,9 +51,18 @@ O aprendizado ainda está **em andamento**, sendo atualizado conforme avanço na
      - `terraform init -reconfigure / -migrate-state / -backend-config` → gerencia reconfiguração e migração do backend.
      - `terraform force-unlock` → desbloqueia manualmente um *state* remoto travado.
      - `terraform plan -generate-config-out` → gera configurações sugeridas para recursos detectados.
+  7. Estudo de **blocos do Terraform**:
+     - **moved** → indica que um recurso foi renomeado/movido, evitando recriação desnecessária.
+     - **removed** → remove um recurso do *state* quando foi excluído do código.
+     - **import** → importa recursos existentes para o código HCL, permitindo que sejam gerenciados pelo Terraform.
 
   > 📌 Detalhes podem ser encontrados no arquivo
   > [README da Section-3](./Section-3/README.md)
+
+---
+
+- **[Section-4](./Section-4)**
+  Quarta parte dos estudos, **em andamento**, focada em **Provisioners** no Terraform.
 
 ---
 
