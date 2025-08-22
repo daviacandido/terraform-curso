@@ -26,11 +26,10 @@ provider "aws" {
   }
 }
 
-data "terraform_remote_state" "vpc" {
-  backend = "s3"
-  config = {
-    bucket = "daviacandido-remote-state-bucket"
-    key    = "aws-vpc/terraform.tfstate"
-    region = "us-east-1"
-  }
+module "network" {
+  source = "./network/"
+
+  cidr_vpc    = "10.0.0.0/16"
+  cidr_subnet = "10.0.1.0/24"
+  environment = "dev"
 }

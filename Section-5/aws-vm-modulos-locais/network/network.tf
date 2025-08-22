@@ -1,8 +1,8 @@
 resource "aws_vpc" "vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.cidr_vpc
 
   tags = {
-    Name = "vpc-fterraform"
+    Name = "vpc-fterraform-${var.environment}"
   }
 }
 
@@ -11,7 +11,7 @@ resource "aws_subnet" "subnet" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = "subnet-fterraform"
+    Name = "subnet-fterraform-${var.environment}"
   }
 }
 
@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "igw-fterraform"
+    Name = "igw-fterraform-${var.environment}"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_route_table" "route_table" {
   }
 
   tags = {
-    Name = "route-table-fterraform"
+    Name = "route-table-fterraform-${var.environment}"
   }
 }
 
@@ -63,6 +63,6 @@ resource "aws_security_group" "security_group" {
   }
 
   tags = {
-    Name = "security-group-fterraform"
+    Name = "security-group-fterraform-${var.environment}"
   }
 }
