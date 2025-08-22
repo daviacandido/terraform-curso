@@ -1,61 +1,84 @@
-# Section-4 - Provisioners no Terraform
+# Estudos com Terraform
 
-Nesta seção estudei o uso de **Provisioners** no Terraform, entendendo suas funcionalidades, limitações e alternativas recomendadas.
-
----
-
-## O que são Provisioners?
-
-Provisioners são usados para executar scripts ou comandos **após** a criação de um recurso.
-Podem ser úteis em alguns cenários específicos, mas **a própria documentação oficial do Terraform recomenda que sejam utilizados apenas em última instância**, não como primeira opção.
+Este repositório contém meus estudos sobre **Terraform**, realizados de forma **teórica e prática**.
+O aprendizado ainda está **em andamento**, sendo atualizado conforme avanço nas seções.
 
 ---
 
-## Provisioners estudados
+## Estrutura
 
-Durante esta seção, foram explorados os seguintes provisioners:
+- **[Section-1](./Section-1)**
+  Primeira parte dos estudos, onde estão os seguintes conteúdos:
+  1. [Sintaxe padrão do arquivo **HCL** do Terraform](./Section-1/sintaxe-terraform)
+  2. [Criação de um **bucket S3** na prática](./Section-1/config-bloco-terraform)
 
-- **provisioner "file"**
-  - Uso com `content` → cria um arquivo diretamente com o conteúdo especificado.
-  - Uso com `source` → copia um arquivo local para dentro da VM provisionada.
-
-- **provisioner "remote-exec"**
-  Executa comandos dentro da VM provisionada via conexão SSH ou WinRM.
-
-- **provisioner "local-exec"**
-  Executa comandos no computador local de onde o Terraform está sendo executado.
-
-- **connection**
-  Bloco usado para definir como o Terraform acessa a VM (ex.: via SSH na AWS/Azure).
+  > 📌 Detalhes e comandos utilizados podem ser encontrados no arquivo
+  > [README da Section-1/config-bloco-terraform](./Section-1/config-bloco-terraform/README.md)
 
 ---
 
-## Recursos provisionados
+- **[Section-2](./Section-2)**
+  Segunda parte dos estudos, focada na **criação de um Storage Account na Azure**, recurso equivalente a um **Bucket S3 na AWS**.
 
-Para praticar os provisioners, foram criadas máquinas virtuais em ambas as nuvens:
+  Nesta seção foram estudados:
+  1. Estrutura do recurso na Azure (Resource Group > Storage Account > Container).
+  2. Uso de **variables** para parametrizar valores no Terraform.
+  3. Uso de **locals** para definir valores reutilizáveis.
+  4. Uso de **output** para expor informações após a execução do plano.
 
-- **AWS** → criada uma **EC2 (AVM)** utilizando provisioners.
-- **Azure** → criada uma **Linux Virtual Machine** utilizando provisioners.
-
----
-
-## Boas práticas: alternativas aos Provisioners
-
-Segundo a documentação oficial do Terraform, **provisioners devem ser usados apenas em casos excepcionais**.
-A recomendação é dar preferência a mecanismos nativos das nuvens para inicialização de VMs.
-
-Por isso, também foram estudados:
-
-- **user_data (AWS)**
-  - Permite passar instruções de inicialização ao criar uma **EC2 Instance**.
-  - Foi utilizado um **[script criado por mim](./vm-aws-user-data/docs/script.sh)** que sobe o Docker e executa um container com a imagem do **NGINX**.
-
-- **custom_data (Azure)**
-  - Permite passar instruções de inicialização ao criar uma **Virtual Machine**.
-  - Foi utilizado o **mesmo script**, localizado em [./vm-azure-custom-data/docs/script.sh](./vm-azure-custom-data/docs/script.sh).
-
-Assim, tanto no `user_data` (AWS) quanto no `custom_data` (Azure) o processo de inicialização da VM executa o mesmo provisionamento, apenas mudando o diretório em que o script está armazenado.
+  > 📌 Um diagrama explicativo sobre a criação do Storage Account pode ser encontrado em
+  > [assets/how-it-works.jpg](./Section-2/assets/how-it-works.jpg)
 
 ---
 
-> ⚠️ Este estudo mostrou como usar provisioners na prática, mas reforçou que a abordagem ideal é sempre priorizar **user_data** (AWS) e **custom_data** (Azure), evitando depender de provisioners como solução padrão.
+- **[Section-3](./Section-3)**
+  Terceira parte dos estudos, focada na diferença entre **local state** e **remote state** no Terraform.
+
+  Nesta seção foram estudados:
+  1. Diferença entre **Local State** e **Remote State**.
+  2. Criação de um **S3 Bucket** na AWS para armazenar *remote state* de projetos AWS.
+  3. Criação de um **Storage Account** na Azure para armazenar *remote state* de projetos Azure.
+  4. Implementação prática de rede:
+     - **AWS**: criação de **VPC**, **Subnet**, **Internet Gateway**, **Route Table**, **Route Table Association** e **Security Group**.
+     - **Azure**: criação de **VNet** utilizando o *remote state* no Storage Account.
+  5. Criação de **máquinas virtuais**:
+     - **AWS**: uso de **Key Pair** e criação de uma instância **EC2**.
+     - **Azure**: uso de **Resource Group**, **Public IP**, **Network Interface**, associação a **NSG** e criação de uma **Linux Virtual Machine**.
+  6. Estudo de **comandos avançados do Terraform**:
+     - `terraform show` → exibe o estado atual da infraestrutura.
+     - `terraform state` → manipula o *state* (listar, mover, remover recursos).
+     - `terraform import` / `terraform refresh` → importa recursos existentes e sincroniza o *state*.
+     - `terraform init -reconfigure / -migrate-state / -backend-config` → gerencia reconfiguração e migração do backend.
+     - `terraform force-unlock` → desbloqueia manualmente um *state* remoto travado.
+     - `terraform plan -generate-config-out` → gera configurações sugeridas para recursos detectados.
+  7. Estudo de **blocos do Terraform**:
+     - **moved** → indica que um recurso foi renomeado/movido, evitando recriação desnecessária.
+     - **removed** → remove um recurso do *state* quando foi excluído do código.
+     - **import** → importa recursos existentes para o código HCL, permitindo que sejam gerenciados pelo Terraform.
+
+  > 📌 Detalhes podem ser encontrados no arquivo
+  > [README da Section-3](./Section-3/README.md)
+
+---
+
+- **[Section-4](./Section-4)**
+  Quarta parte dos estudos, focada em **Provisioners** no Terraform.
+
+  Nesta seção foram estudados:
+  1. Uso de **provisioner "file"** com `content` e `source`.
+  2. Uso de **provisioner "remote-exec"**.
+  3. Uso de **provisioner "local-exec"**.
+  4. Configuração de **connection** para acesso às VMs.
+  5. Criação de **VMs** em ambas as nuvens:
+     - **AWS**: EC2 (AVM) criada utilizando provisioners.
+     - **Azure**: Linux Virtual Machine criada utilizando provisioners.
+  6. Boas práticas — alternativas aos provisioners:
+     - **user_data (AWS)** → utilizado com um [script próprio](./Section-4/vm-aws-user-data/docs/script.sh) que instala Docker e sobe um container NGINX.
+     - **custom_data (Azure)** → utilizado com o **mesmo script**, localizado em [./Section-4/vm-azure-custom-data/docs/script.sh](./Section-4/vm-azure-custom-data/docs/script.sh).
+
+  > 📌 Detalhes podem ser encontrados no arquivo
+  > [README da Section-4](./Section-4/README.md)
+
+---
+
+Mais seções serão adicionadas conforme o progresso dos estudos.
