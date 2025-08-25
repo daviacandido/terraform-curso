@@ -26,7 +26,3 @@ Os **Meta Arguments** que podem ser aplicados a módulos são:
 - **provider** → especifica qual provedor será utilizado para aquele módulo.
 
 ---
-
-## Status do estudo
-
-📌 O estudo está em andamento, com exemplos práticos sendo testados para cada tipo de **Meta Argument**.
