@@ -96,4 +96,14 @@ O aprendizado ainda está **em andamento**, sendo atualizado conforme avanço na
 
 ---
 
+- **[Section-6](./Section-6)**
+  Sexta parte dos estudos, focada em **Meta Arguments** no Terraform.
+
+  Nesta seção estão sendo estudados:
+  - **Em Resources:** `depends_on`, `count`, `for_each`, `provider`, `lifecycle`.
+  - **Em Modules:** `depends_on`, `count`, `for_each`, `provider`.
+
+  > 📌 Detalhes podem ser encontrados no arquivo
+  > [README da Section-6](./Section-6/README.md)
+
 Mais seções serão adicionadas conforme o progresso dos estudos.
