@@ -4,6 +4,14 @@ Nesta seção estudei sobre **funções e expressões no Terraform**, entendendo
 
 ---
 
+## Conditional Expressions
+
+- Permitem expressar condições de forma simples, como um **if ternário**.
+- Sintaxe: condition ? value_if_true : value_if_false
+- Exemplo: escolher um tamanho de instância diferente conforme o ambiente.
+
+---
+
 ## For Expressions
 
 - Permitem iterar sobre listas ou mapas e gerar novos valores.
@@ -41,8 +49,9 @@ Nesta seção estudei sobre **funções e expressões no Terraform**, entendendo
 
 ## Conclusão
 
-- **For expressions:** permitem criar coleções derivadas de outras.
-- **Splat expressions:** facilitam o acesso a listas de atributos.
-- **Dynamic blocks:** geram blocos repetidos de forma limpa e flexível.
+- **Conditional expressions:** permitem lógica condicional simples.
+- **For expressions:** criam coleções derivadas de outras.
+- **Splat expressions:** acessam listas de atributos facilmente.
+- **Dynamic blocks:** geram blocos repetidos de forma limpa.
 - **Terraform console:** ambiente para testes interativos.
 - **Built-in functions:** funções nativas poderosas para manipulação de dados.

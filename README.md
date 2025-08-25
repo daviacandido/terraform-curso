@@ -112,15 +112,14 @@ O aprendizado ainda está **em andamento**, sendo atualizado conforme avanço na
   Sétima parte dos estudos, focada em **funções e expressões no Terraform**.
 
   Nesta seção foram estudados:
-  1. **For expressions**
-  2. **Splat expressions**
-  3. **Dynamic blocks**
-  4. **Comando terraform console**
-  5. **Built-in functions**
+  1. **Conditional expressions**
+  2. **For expressions**
+  3. **Splat expressions**
+  4. **Dynamic blocks**
+  5. **Comando terraform console**
+  6. **Built-in functions**
 
   > 📌 Detalhes podem ser encontrados no arquivo
   > [README da Section-7](./Section-7/README.md)
-
-  ---
 
 Mais seções serão adicionadas conforme o progresso dos estudos.
