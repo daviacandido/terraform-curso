@@ -1,0 +1,57 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "6.9.0"
+    }
+  }
+
+  backend "s3" {
+    bucket = "daviacandido-remote-state-bucket"
+    key    = "provider/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+provider "aws" {
+  region = "us-east-1" // Região onde o bucket S3 será criado
+
+  default_tags {
+    tags = {
+      owner      = "daviacandido"
+      managed-by = "terraform"
+    }
+  }
+}
+
+provider "aws" {
+  alias  = "dev"
+  region = "ap-southeast-2" // Região onde o bucket S3 será criado
+
+  default_tags {
+    tags = {
+      owner      = "daviacandido"
+      managed-by = "terraform"
+    }
+  }
+}
+
+provider "aws" {
+  alias  = "homolog"
+  region = "us-east-1" // Região onde o bucket S3 será criado
+
+  default_tags {
+    tags = {
+      owner      = "daviacandido"
+      managed-by = "terraform"
+    }
+  }
+}
+
+module "vpc" {
+  providers = {
+    aws.dev     = aws.dev
+    aws.homolog = aws.homolog
+  }
+  source = "./vpc/"
+}
